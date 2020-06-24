@@ -29,9 +29,47 @@ function createPhoneNumber(numbers){
 
 function createPhoneNumber(numbers){
     numbers = numbers.join('');
-    return '(' + numbers.substring(0, 3) + ') ' 
-        + numbers.substring(3, 6) 
-        + '-' 
-        + numbers.substring(6);
+    return '(' + numbers.substring(0, 3) + ') ' + numbers.substring(3, 6) + '-' + numbers.substring(6);
   }
 
+// The most clever solution
+
+function createPhoneNumber(numbers){
+    var format = "(xxx) xxx-xxxx";
+    
+    for(var i = 0; i < numbers.length; i++)
+    {
+      format = format.replace('x', numbers[i]);
+    }
+    
+    return format;
+  }
+
+// Solution that was on my runner up method
+
+function createPhoneNumber(numbers){
+    numbers.unshift("(");
+    numbers.splice(4, 0, ")", " ");
+    numbers.splice(9, 0, "-");
+    return numbers.join("");
+}
+
+// 
+
+function createPhoneNumber(numbers){
+    var numStr = numbers.join('');
+    var first = numStr.substr(0, 3);
+    var second = numStr.substr(3, 3);
+    var third = numStr.substr(-4);
+    return '(' + first + ') ' + second + '-' + third; 
+  }
+
+// Solutions that fly over my head
+
+function createPhoneNumber(numbers){
+    return numbers.join('').replace(/(...)(...)(.*)/, '($1) $2-$3');
+  }
+   //or
+function createPhoneNumber(numbers){
+    return numbers.join('').replace(/(\d{3})(\d{3})(\d{4})/,'($1) $2-$3');
+  }
