@@ -23,7 +23,7 @@ function positiveSum(arr){
     return arr.filter(x => x >= 0).reduce((a,b) => a + b, 0)
 }
 
-// Solution that I don't understant why they used the i and the a for 
+// Solution that I don't understant why they used the i and the a for
 
 function positiveSum(arr) {
     var sum = 0;
